@@ -1,0 +1,10 @@
+{
+  "name": "measuring-quality-of-life",
+  "version": "0.1.1",
+  "dependencies": {
+    "d3": "^3.5.16",
+    "jquery": "^2.2.3",
+    "handlebars": "^4.0.5",
+    "datamaps": "^0.5.1"
+  }
+}

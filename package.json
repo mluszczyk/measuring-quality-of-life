@@ -1,0 +1,6 @@
+{
+  "name": "measuring-quality-of-life",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}
