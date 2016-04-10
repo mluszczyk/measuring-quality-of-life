@@ -109,8 +109,7 @@ function translate() {
     $("[data-i18n]").localize();
 }
 
-i18next.init({
-    lng: 'pl',
+i18next.use(i18nextBrowserLanguageDetector).init({
     resources: {
         en: {
             translation: {
