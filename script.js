@@ -30,7 +30,10 @@ function indicatorsList(obj) {
     for (var property in obj) {
         var value = obj[property];
         if ($.isNumeric(value)) {
-            list.push({name: property, value: Math.round(value * 100) / 100});
+            list.push({
+                name: i18next.t(property),
+                value: Math.round(value * 100) / 100
+            });
         }
     }
     return list;
@@ -47,7 +50,10 @@ function getIndicatorNames(data) {
     var anyData = data[getAnyKey(data)];
     for (var property in anyData) {
         if ($.isNumeric(anyData[property])) {
-            list.push({name: property});
+            list.push({
+                code: property,
+                name: i18next.t(property)
+            });
         }
     }
     return list;
@@ -60,11 +66,10 @@ function renderSwitch(data, colors, map) {
     var html = template({indicators: list});
     $("#switch").html(html);
     for (var i = 0; i < list.length; ++i) {
-        var name = list[i].name;
-        console.log("! " + name);
-        $("[data-indicator-name=" + name + "]").click(function(event) {
-            var name = $(event.target).attr("data-indicator-name");
-            setLayer(data, colors, map, name);
+        var code = list[i].code;
+        $("[data-indicator-code=" + code + "]").click(function(event) {
+            var code = $(event.target).attr("data-indicator-code");
+            setLayer(data, colors, map, code);
         });
     }
 }
@@ -100,3 +105,49 @@ function initMap(data) {
 
 loadData(initMap);
 
+function translate() {
+    $("[data-i18n]").localize();
+}
+
+i18next.init({
+    lng: 'pl',
+    resources: {
+        en: {
+            translation: {
+                "title": "Measuring of the quality of life in an international scale",
+                "gospodarczy": "economic",
+                "polityczno-instytucjonalny": "political and institutional",
+                "przestrzenny": "spatial",
+                "społeczny": "social",
+                "środowiskowy": "environmental"
+            }
+        },
+        pl: {
+            translation: {
+                "title": "Pomiar jakości życia w skali międzynarodowej",
+                "gospodarczy": "gospodarczy",
+                "polityczno-instytucjonalny": "polityczno-instytucjonalny",
+                "przestrzenny": "przestrzenny",
+                "społeczny": "społeczny",
+                "środowiskowy": "środowiskowy"
+            }
+        },
+        de: {
+            translation: {
+                "title": "Messung von der Lebensqualität in dem internationalen Umfang"
+            }
+        }
+    }
+}, function(err, t) {
+    jqueryI18next.init(i18next, $);
+
+    translate();
+});
+
+
+$("[data-switch-language]").click(function() {
+    var language = $(this).attr("data-switch-language");
+    i18next.changeLanguage(language);
+    console.log(language);
+    translate();
+});

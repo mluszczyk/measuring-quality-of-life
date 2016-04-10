@@ -7,6 +7,8 @@
 <script src="./bower_components/datamaps/src/js/components/d3/lib/colorbrewer/colorbrewer.js"></script>
 <script src="bower_components/handlebars/handlebars.js"></script>
 <script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/i18next/i18next.js"></script>
+<script src="bower_components/jquery-i18next/jquery-i18next.min.js"></script>
 
 <style>
 .hoverinfo table {
@@ -29,13 +31,14 @@
 
 <script id="switch-list-template" type="text/x-handlebars-template">
 {{#each indicators}}
-    <button data-indicator-name="{{name}}">{{name}}</button>
+    <button data-indicator-code="{{code}}" data-i18n={{code}}>{{name}}</button>
 {{/each }}
 </script>
 </head>
 
 <body>
-<p>Pomiar jakości życia w skali międzynarodowej</p>
+<p><button data-switch-language="pl">Polski</button> <button data-switch-language="en">English</button></p>
+<h1 data-i18n="title">Pomiar jakości życia w skali międzynarodowej</h1>
 <p>Marcin Łuszczyk</p>
 <div id="container" style="position: relative; width: 1000px; height: 600px;"></div>
 <div id="switch"></div>
