@@ -123,7 +123,8 @@ i18next.use(i18nextBrowserLanguageDetector).init({
                 "przestrzenny": "spatial",
                 "społeczny": "social",
                 "środowiskowy": "environmental",
-                "summary": getSummary("en")
+                "summary": getSummary("en"),
+                "citing": "About the book"
             }
         },
         pl: {
@@ -134,7 +135,8 @@ i18next.use(i18nextBrowserLanguageDetector).init({
                 "przestrzenny": "przestrzenny",
                 "społeczny": "społeczny",
                 "środowiskowy": "środowiskowy",
-                "summary": getSummary("pl")
+                "summary": getSummary("pl"),
+                "citing": "O książce"
             }
         },
         de: {
@@ -145,7 +147,8 @@ i18next.use(i18nextBrowserLanguageDetector).init({
                 "przestrzenny": "Raum",
                 "społeczny": "Gesellschaft",
                 "środowiskowy": "Umwelt",
-                "summary": getSummary("de")
+                "summary": getSummary("de"),
+                "citing": "Über das Buch"
             }
         }
     }
