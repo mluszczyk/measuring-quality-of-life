@@ -92,7 +92,7 @@ function initMap(data) {
             var html = countryPopupTemplate({name: name, indicators: indicatorsList(countryData)});
             return html;
           }  
-        },
+        }
     });
 
     var colors = d3.scale.quantize()
@@ -101,12 +101,16 @@ function initMap(data) {
     setLayer(data, colors, map, "QoL");
 
     renderSwitch(data, colors, map);
-};
+}
 
 loadData(initMap);
 
 function translate() {
     $("[data-i18n]").localize();
+}
+
+function getSummary(lang) {
+    return $("[data-summary][data-lang=" + lang + "]").html();
 }
 
 i18next.use(i18nextBrowserLanguageDetector).init({
@@ -118,7 +122,8 @@ i18next.use(i18nextBrowserLanguageDetector).init({
                 "polityczno-instytucjonalny": "political and institutional",
                 "przestrzenny": "spatial",
                 "społeczny": "social",
-                "środowiskowy": "environmental"
+                "środowiskowy": "environmental",
+                "summary": getSummary("en")
             }
         },
         pl: {
@@ -128,12 +133,14 @@ i18next.use(i18nextBrowserLanguageDetector).init({
                 "polityczno-instytucjonalny": "polityczno-instytucjonalny",
                 "przestrzenny": "przestrzenny",
                 "społeczny": "społeczny",
-                "środowiskowy": "środowiskowy"
+                "środowiskowy": "środowiskowy",
+                "summary": getSummary("pl")
             }
         },
         de: {
             translation: {
-                "title": "Messung von der Lebensqualität in dem internationalen Umfang"
+                "title": "Messung von der Lebensqualität in dem internationalen Umfang",
+                "summary": getSummary("de")
             }
         }
     }
