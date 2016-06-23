@@ -140,6 +140,11 @@ i18next.use(i18nextBrowserLanguageDetector).init({
         de: {
             translation: {
                 "title": "Messung von der Lebensqualität in dem internationalen Umfang",
+                "gospodarczy": "Wirtschaft",
+                "polityczno-instytucjonalny": "Politik",
+                "przestrzenny": "Raum",
+                "społeczny": "Gesellschaft",
+                "środowiskowy": "Umwelt",
                 "summary": getSummary("de")
             }
         }
